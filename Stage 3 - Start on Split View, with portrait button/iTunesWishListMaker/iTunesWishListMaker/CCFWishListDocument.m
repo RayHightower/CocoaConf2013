@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Subsequently & Furthermore, Inc. All rights reserved.
 //
 
-#import "CCFWishListsDocument.h"
+#import "CCFWishListDocument.h"
 
-@implementation CCFWishListsDocument
+@implementation CCFWishListDocument
 
 - (id)initWithFileURL:(NSURL *)url
 {

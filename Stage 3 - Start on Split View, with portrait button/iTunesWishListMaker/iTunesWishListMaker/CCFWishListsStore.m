@@ -7,7 +7,7 @@
 //
 
 #import "CCFWishListsStore.h"
-#import "CCFWishListsDocument.h"
+#import "CCFWishListDocument.h"
 
 // Global C varaible? Oh no!!!
 CCFWishListsStore *CCFWishListsStoredSharedInstance;
@@ -37,7 +37,7 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
 }
 
 #pragma mark property override
--(void) setCurrentWishList:(CCFWishListsDocument *)currentWishList {
+-(void) setCurrentWishList:(CCFWishListDocument *)currentWishList {
     if (_currentWishList != currentWishList) {
         if (_currentWishList) {
             [_currentWishList closeWithCompletionHandler:^(BOOL success) {
@@ -53,7 +53,7 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
     }
 }
 
--(CCFWishListsDocument*) currentWishList {
+-(CCFWishListDocument*) currentWishList {
     return _currentWishList;
 }
 
@@ -87,7 +87,7 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
                                                         error:&createDirectoryErr];
         NSURL *defaultDocURL = [[self localWishListsDirectory]
                                 URLByAppendingPathComponent:@"Untitled.wishlist"];
-        CCFWishListsDocument *emptyWishList = [[CCFWishListsDocument alloc]
+        CCFWishListDocument *emptyWishList = [[CCFWishListDocument alloc]
                                               initWithFileURL:defaultDocURL];
         [emptyWishList saveToURL:defaultDocURL
                 forSaveOperation:UIDocumentSaveForCreating
@@ -109,7 +109,7 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
         if ([[wishListURL pathExtension] isEqualToString:@"wishlist"]) {
             [self.localWishListURLs addObject:wishListURL];
             if (!self.currentWishList) {
-                CCFWishListsDocument *defaultWishList = [[CCFWishListsDocument alloc] initWithFileURL:wishListURL];
+                CCFWishListDocument *defaultWishList = [[CCFWishListDocument alloc] initWithFileURL:wishListURL];
                 
                 [defaultWishList openWithCompletionHandler:^(BOOL success) {
                     self.currentWishList = defaultWishList;

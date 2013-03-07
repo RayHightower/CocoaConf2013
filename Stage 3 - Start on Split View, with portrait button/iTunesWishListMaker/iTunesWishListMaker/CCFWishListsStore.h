@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CCFWishListsDocument.h"
+#import "CCFWishListDocument.h"
 
 @interface CCFWishListsStore : NSObject
 +(CCFWishListsStore*) sharedInstance;
-@property (strong) CCFWishListsDocument *currentWishList;
+@property (strong) CCFWishListDocument *currentWishList;
 @property (readonly) NSMutableArray *localWishListURLs;
 @property (readonly) NSMutableArray *iCloudWishListURLs;
 -(void) createAndMakeCurrentWishList: (NSString*) name;

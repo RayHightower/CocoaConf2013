@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCFWishListsDocument : UIDocument
+@interface CCFWishListDocument : UIDocument
 @property (copy) NSMutableArray *mutableWishListDicts;
 -(void) addItemDict: (NSDictionary*) dict;
 -(void) removeItemDict: (NSDictionary*) dict;
