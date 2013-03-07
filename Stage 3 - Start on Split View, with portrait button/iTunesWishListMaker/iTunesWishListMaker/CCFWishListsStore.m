@@ -30,6 +30,7 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
         _iCloudWishListURLs = [[NSMutableArray alloc] init];
         
         // TODO: Add methods to load the wishLists
+        [self loadLocalWishLists];
         
     }
     return self;
@@ -107,9 +108,20 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
     for (NSURL *wishListURL in contents) {
         if ([[wishListURL pathExtension] isEqualToString:@"wishlist"]) {
             [self.localWishListURLs addObject:wishListURL];
-            
+            if (!self.currentWishList) {
+                CCFWishListsDocument *defaultWishList = [[CCFWishListsDocument alloc] initWithFileURL:wishListURL];
+                
+                [defaultWishList openWithCompletionHandler:^(BOOL success) {
+                    self.currentWishList = defaultWishList;
+                    NSLog(@"opened default wishlist at %@", wishListURL);
+                }];
+            }
         }
     }
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"LocalWishListsChanged"
+     object:self];
     
 }
 
