@@ -7,6 +7,7 @@
 //
 
 #import "CCFWishListViewController.h"
+#import "CCFWishListsStore.h"
 
 @interface CCFWishListViewController ()
 
@@ -33,6 +34,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[CCFWishListsStore sharedInstance].currentWishList.mutableWishListDicts count];
+    
 }
 
 @end

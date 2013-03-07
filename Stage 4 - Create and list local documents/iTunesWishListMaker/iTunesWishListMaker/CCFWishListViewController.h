@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCFWishListViewController : UIViewController
+@interface CCFWishListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
 
 @end
