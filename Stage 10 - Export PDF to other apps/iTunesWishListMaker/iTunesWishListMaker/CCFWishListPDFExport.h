@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface CCFWishListPDFExport : NSObject
--(NSURL*) pathForExportedWishList;
+-(NSURL*) URLForExportedWishList;
 
 @end

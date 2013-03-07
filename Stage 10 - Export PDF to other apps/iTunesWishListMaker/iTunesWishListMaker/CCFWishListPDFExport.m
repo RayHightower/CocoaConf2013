@@ -12,7 +12,7 @@
 
 @implementation CCFWishListPDFExport
 
--(NSURL*) pathForExportedWishList {
+-(NSURL*) URLForExportedWishList {
 	CCFWishListDocument *wishList = [CCFWishListsStore sharedInstance].currentWishList;
 	NSString *nameStub = [wishList.fileURL.lastPathComponent stringByDeletingPathExtension];
 	NSString *exportName = [nameStub stringByAppendingPathExtension:@"pdf"];

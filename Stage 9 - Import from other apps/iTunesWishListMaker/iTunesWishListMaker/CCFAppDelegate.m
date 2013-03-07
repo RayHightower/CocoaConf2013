@@ -11,6 +11,9 @@
 
 @implementation CCFAppDelegate
 
+
+// If we want to accept files from other apps, this is the method we implement.
+// Don't link the App Delegate too deeply into the app (encapsulation & information hiding).
 -(BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 	
 	NSLog (@"openURL: %@ sourceApplication: %@", url, sourceApplication);

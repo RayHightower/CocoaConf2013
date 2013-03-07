@@ -192,7 +192,7 @@
 
 - (IBAction)handleActionTapped:(id)sender {
 	CCFWishListPDFExport *exporter = [[CCFWishListPDFExport alloc] init];
-	NSURL *exportedURL = [exporter pathForExportedWishList];
+	NSURL *exportedURL = [exporter URLForExportedWishList];
 	NSLog (@"exported path to %@", exportedURL);
 	self.interactionController =
 	[UIDocumentInteractionController interactionControllerWithURL:exportedURL];
