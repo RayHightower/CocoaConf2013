@@ -7,6 +7,7 @@
 //
 
 #import "CCFWishListsStore.h"
+#import "CCFWishListsDocument.h"
 
 // Global C varaible? Oh no!!!
 CCFWishListsStore *CCFWishListsStoredSharedInstance;
@@ -72,7 +73,7 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
 
 -(void) loadLocalWishLists {
     [self.localWishListURLs removeAllObjects];
-    NSString *wishListsPath = [[self localWishLitsDirectory] path];
+    NSString *wishListsPath = [[self localWishListsDirectory] path];
     BOOL pathExists = [[NSFileManager defaultManager]
                        fileExistsAtPath:wishListsPath];
     
@@ -83,8 +84,35 @@ CCFWishListsStore *CCFWishListsStoredSharedInstance;
                                   withIntermediateDirectories:YES
                                                    attributes:nil
                                                         error:&createDirectoryErr];
+        NSURL *defaultDocURL = [[self localWishListsDirectory]
+                                URLByAppendingPathComponent:@"Untitled.wishlist"];
+        CCFWishListsDocument *emptyWishList = [[CCFWishListsDocument alloc]
+                                              initWithFileURL:defaultDocURL];
+        [emptyWishList saveToURL:defaultDocURL
+                forSaveOperation:UIDocumentSaveForCreating
+               completionHandler:^(BOOL success) {
+                   NSLog (@"created %@", defaultDocURL);
+                   [self loadLocalWishLists];
+               }];
+        return;
     }
+    
+    // load the .wishlists URLs
+    NSArray *contents = [[NSFileManager defaultManager]
+                         contentsOfDirectoryAtURL:[self localWishListsDirectory]
+                         includingPropertiesForKeys:nil
+                         options:0
+                         error:nil];
+
+    for (NSURL *wishListURL in contents) {
+        if ([[wishListURL pathExtension] isEqualToString:@"wishlist"]) {
+            [self.localWishListURLs addObject:wishListURL];
+            
+        }
+    }
+    
 }
+
 
 
 @end
