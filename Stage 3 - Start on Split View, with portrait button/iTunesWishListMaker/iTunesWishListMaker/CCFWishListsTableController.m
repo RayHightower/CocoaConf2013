@@ -7,20 +7,29 @@
 //
 
 #import "CCFWishListsTableController.h"
+#import "CCFWishListsStore.h"
 
 @interface CCFWishListsTableController ()
 
 // show status between Local and iCloud
 @property (weak, nonatomic) IBOutlet UISegmentedControl *directorySegmentedControl;
 
-- (IBAction)directorySegmentedControlValueChanged:(id)sender; // toggled between Local and iCloud
+// toggled between Local and iCloud
+//- (IBAction)directorySegmentedControlValueChanged:(id)sender; {
+//    [self.tableView reloadData];
+//}
+
 
 
 - (IBAction)handleAddTapped:(id)sender; // plus button tapped
 
 @end
 
+
+
 @implementation CCFWishListsTableController
+
+
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -63,11 +72,21 @@
 
 #pragma mark - Table view data source
 
+-(NSMutableArray*) relevantWishListsArray {
+    if ([self.directorySegmentedControl selectedSegmentIndex] == 0) {
+        return [CCFWishListsStore sharedInstance].localWishListURLs;
+        
+    }
+    return [CCFWishListsStore sharedInstance].iCloudWishListURLs;
+    
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return [[self relevantWishListsArray] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -77,12 +96,23 @@
     return 0;
 }
 
+
+// toggled between Local and iCloud
+- (IBAction)directorySegmentedControlValueChanged:(id)sender; {
+    [self.tableView reloadData];
+}
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"wishListURLCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    NSURL *wishListURL = [[self relevantWishListsArray]
+                          objectAtIndex:indexPath.row];
+    cell.textLabel.text = [wishListURL lastPathComponent];
     
     return cell;
 }
@@ -139,8 +169,10 @@
      */
 }
 
-- (IBAction)directorySegmentedControlValueChanged:(id)sender {
-}
+//
+//- (IBAction)directorySegmentedControlValueChanged:(id)sender {
+//}
+//
 
 - (IBAction)handleAddTapped:(id)sender {
 }
