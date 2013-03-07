@@ -25,6 +25,7 @@
 		013937D216E8BA39000DCA6B /* CCFWishListDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 013937CF16E8BA39000DCA6B /* CCFWishListDocument.m */; };
 		013937D316E8BA39000DCA6B /* CCFWishListsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 013937D116E8BA39000DCA6B /* CCFWishListsStore.m */; };
 		013937D616E8BA54000DCA6B /* CCFWishListsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013937D516E8BA54000DCA6B /* CCFWishListsTableController.m */; };
+		6F3C08D716E9216400814EE5 /* CCFWishListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C08D616E9216400814EE5 /* CCFWishListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		013937D116E8BA39000DCA6B /* CCFWishListsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFWishListsStore.m; sourceTree = "<group>"; };
 		013937D416E8BA54000DCA6B /* CCFWishListsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFWishListsTableController.h; sourceTree = "<group>"; };
 		013937D516E8BA54000DCA6B /* CCFWishListsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFWishListsTableController.m; sourceTree = "<group>"; };
+		6F3C08D516E9216400814EE5 /* CCFWishListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFWishListViewController.h; sourceTree = "<group>"; };
+		6F3C08D616E9216400814EE5 /* CCFWishListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFWishListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 				013937D116E8BA39000DCA6B /* CCFWishListsStore.m */,
 				013937D416E8BA54000DCA6B /* CCFWishListsTableController.h */,
 				013937D516E8BA54000DCA6B /* CCFWishListsTableController.m */,
+				6F3C08D516E9216400814EE5 /* CCFWishListViewController.h */,
+				6F3C08D616E9216400814EE5 /* CCFWishListViewController.m */,
 			);
 			name = "Wish Lists";
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				013937D216E8BA39000DCA6B /* CCFWishListDocument.m in Sources */,
 				013937D316E8BA39000DCA6B /* CCFWishListsStore.m in Sources */,
 				013937D616E8BA54000DCA6B /* CCFWishListsTableController.m in Sources */,
+				6F3C08D716E9216400814EE5 /* CCFWishListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
