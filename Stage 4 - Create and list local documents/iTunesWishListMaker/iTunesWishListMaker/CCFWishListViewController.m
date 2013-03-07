@@ -7,6 +7,8 @@
 //
 
 #import "CCFWishListViewController.h"
+#import "CCFAllWishListsViewController.h"
+#import "CCFStoreItemDetailViewController.h"
 #import "CCFWishListsStore.h"
 
 @interface CCFWishListViewController ()
@@ -14,15 +16,21 @@
 @end
 
 @implementation CCFWishListViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        [[NSNotificationCenter defaultCenter]
+         addObserverForName:@"CurrentWishListChanged"
+         object:nil
+         queue:nil
+         usingBlock:^(NSNotification *note) {
+             [self.tableView reloadData]
+        }];
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -45,6 +53,22 @@
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[CCFWishListsStore sharedInstance].currentWishList.mutableWishListDicts count];
     
+}
+
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WishListCell"];
+    
+    NSDictionary *item = [CCFWishListsStore sharedInstance].currentWishList.mutableWishListDicts[indexPath.row];
+    NSString *title = item[@"collectionName"];
+    if (!title) {
+        title = item[@"trackName"];
+    }
+    if (!title) {
+        title = item[@"trackCensoredName"];
+    }
+    cell.textLabel.text = title;
+    return cell;
 }
 
 @end

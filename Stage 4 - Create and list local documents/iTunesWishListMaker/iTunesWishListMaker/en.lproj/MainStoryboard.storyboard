@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="394" y="-26"/>
         </scene>
-        <!--View Controller-->
+        <!--Wish Lists View Controller-->
         <scene sceneID="vzx-VW-1GB">
             <objects>
-                <viewController id="rv0-e3-znD" sceneMemberID="viewController">
+                <viewController id="rv0-e3-znD" customClass="CCFWishListsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rph-3D-Hgk">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
