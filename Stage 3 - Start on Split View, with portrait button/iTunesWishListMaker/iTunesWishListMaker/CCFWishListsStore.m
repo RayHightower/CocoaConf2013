@@ -8,6 +8,91 @@
 
 #import "CCFWishListsStore.h"
 
+// Global C varaible? Oh no!!!
+CCFWishListsStore *CCFWishListsStoredSharedInstance;
+
 @implementation CCFWishListsStore
 
+@synthesize currentWishList = _currentWishList;
+
++(CCFWishListsStore*) sharedInstance {
+    if (!CCFWishListsStoredSharedInstance) {
+        CCFWishListsStoredSharedInstance = [[CCFWishListsStore alloc] init];
+    }
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _localWishListURLs = [[NSMutableArray alloc] init];
+        _iCloudWishListURLs = [[NSMutableArray alloc] init];
+        
+        // TODO: Add methods to load the wishLists
+        
+    }
+    return self;
+}
+
+#pragma mark property override
+-(void) setCurrentWishList:(CCFWishListsDocument *)currentWishList {
+    if (_currentWishList != currentWishList) {
+        if (_currentWishList) {
+            [_currentWishList closeWithCompletionHandler:^(BOOL success) {
+                NSLog (@"closed wish list at %@", _currentWishList.fileURL);
+                
+            }];
+        }
+        _currentWishList = currentWishList;         // the instance variable gets set to the parameter being passed in
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName: @"CurrentWishListChanged"
+         object:self];
+        
+    }
+}
+
+-(CCFWishListsDocument*) currentWishList {
+    return _currentWishList;
+}
+
+#pragma mark local files
+-(NSURL*) localDocumentsDirectory {
+    NSArray *directories = [[NSFileManager defaultManager]
+                            URLsForDirectory:NSDocumentDirectory
+                            inDomains:NSUserDomainMask];
+
+    // return [directories objectAtIndex:0];  // old array syntax
+    return directories[0];  //using the new array syntax
+}
+
+-(NSURL*) localWishListsDirectory {
+    return [[self localDocumentsDirectory]
+            URLByAppendingPathComponent:@"wishLists"];
+}
+
+-(void) loadLocalWishLists {
+    [self.localWishListURLs removeAllObjects];
+    NSString *wishListsPath = [[self localWishLitsDirectory] path];
+    BOOL pathExists = [[NSFileManager defaultManager]
+                       fileExistsAtPath:wishListsPath];
+    
+    if (!pathExists) {
+        // create directory and seed the empty document
+        NSError *createDirectoryErr = nil;
+        [[NSFileManager defaultManager] createDirectoryAtPath:wishListsPath
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:&createDirectoryErr];
+    }
+}
+
+
 @end
+
+
+
+
+
+
+
+
