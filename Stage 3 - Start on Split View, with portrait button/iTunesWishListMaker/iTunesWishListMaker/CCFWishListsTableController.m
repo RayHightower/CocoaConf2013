@@ -10,18 +10,39 @@
 
 @interface CCFWishListsTableController ()
 
+// show status between Local and iCloud
+@property (weak, nonatomic) IBOutlet UISegmentedControl *directorySegmentedControl;
+
+- (IBAction)directorySegmentedControlValueChanged:(id)sender; // toggled between Local and iCloud
+
+
+- (IBAction)handleAddTapped:(id)sender; // plus button tapped
+
 @end
 
 @implementation CCFWishListsTableController
 
-- (id)initWithStyle:(UITableViewStyle)style
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+
 {
-    self = [super initWithStyle:style];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserverForName:@"LocalWishListsChanged"
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *note) {
+                                                          [self.tableView reloadData];
+                                                      }];
+        
+        
     }
     return self;
 }
+
+
+
 
 - (void)viewDidLoad
 {
@@ -118,4 +139,9 @@
      */
 }
 
+- (IBAction)directorySegmentedControlValueChanged:(id)sender {
+}
+
+- (IBAction)handleAddTapped:(id)sender {
+}
 @end
