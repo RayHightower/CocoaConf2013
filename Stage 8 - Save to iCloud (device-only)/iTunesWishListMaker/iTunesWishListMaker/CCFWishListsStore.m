@@ -161,7 +161,7 @@ CCFWishListsStore *CCFWishListsStoreSharedInstance;
 	NSLog (@"saving %d items to iCloud URL: %@", [iCloudList.mutableWishListDicts count], iCloudURL);
 	[iCloudList saveToURL:iCloudURL
 		 forSaveOperation:UIDocumentSaveForCreating
-		completionHandler:^(BOOL success) {
+		completionHandler:^(BOOL success) {             // RTH: What is a simple, bare-bones definition for "completion handler"?
 			if (success) {
 				NSLog (@"*** saved to iCloud");
 				[[NSNotificationCenter defaultCenter] postNotificationName:@"iCloudWishListsChanged"

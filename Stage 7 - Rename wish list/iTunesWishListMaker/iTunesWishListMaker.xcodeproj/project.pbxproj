@@ -65,6 +65,7 @@
 		013937DB16E8BE26000DCA6B /* CCFWishListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFWishListViewController.m; sourceTree = "<group>"; };
 		013937DD16E8C473000DCA6B /* CCFWishListNameChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFWishListNameChangeViewController.h; sourceTree = "<group>"; };
 		013937DE16E8C473000DCA6B /* CCFWishListNameChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFWishListNameChangeViewController.m; sourceTree = "<group>"; };
+		6F35762916E93E5A00E3E0C0 /* iTunesWishListMaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iTunesWishListMaker.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 		0139379F16E8AEFA000DCA6B /* iTunesWishListMaker */ = {
 			isa = PBXGroup;
 			children = (
+				6F35762916E93E5A00E3E0C0 /* iTunesWishListMaker.entitlements */,
 				013937A816E8AEFA000DCA6B /* CCFAppDelegate.h */,
 				013937A916E8AEFA000DCA6B /* CCFAppDelegate.m */,
 				013937B116E8AEFA000DCA6B /* MainStoryboard.storyboard */,
@@ -335,6 +337,7 @@
 		013937BA16E8AEFA000DCA6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iTunesWishListMaker/iTunesWishListMaker.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTunesWishListMaker/iTunesWishListMaker-Prefix.pch";
 				INFOPLIST_FILE = "iTunesWishListMaker/iTunesWishListMaker-Info.plist";
@@ -346,6 +349,7 @@
 		013937BB16E8AEFA000DCA6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iTunesWishListMaker/iTunesWishListMaker.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTunesWishListMaker/iTunesWishListMaker-Prefix.pch";
 				INFOPLIST_FILE = "iTunesWishListMaker/iTunesWishListMaker-Info.plist";

@@ -207,6 +207,35 @@ CCFWishListsStore *CCFWishListsStoreSharedInstance;
 	
 }
 
+#pragma mark icloud
+-(NSURL*) iCloudDocumentsDirectory {
+    NSURL *cloudURL = [[NSFileManager defaultManager]
+                       URLForUbiquityContainerIdentifier:nil];
+    cloudURL = [cloudURL URLByAppendingPathComponent:@"Documents"];
+    return cloudURL;
+    
+}
+
+-(NSURL*) iCloudwishListDirectory {
+    return [[self iCloudDocumentsDirectory]
+            URLByAppendingPathComponent:@"wishklists"];
+}
+
+-(void) loadiCloudWishLists {
+    [self.iCloudWishListURLs removeAllObjects];
+    //bail if no iCloud
+    if (! [self iCloudDocumentsDirectory]) {
+        // More here................................................
+        
+        
+        
+    }
+}
+
+
+
+#pragma mark defined methods
+
 -(void) createAndMakeCurrentWishList:(NSString *)name {
 	NSURL *parentURL = [self.currentWishList.fileURL URLByDeletingLastPathComponent];
 	NSURL *createdURL = [parentURL URLByAppendingPathComponent:name];
