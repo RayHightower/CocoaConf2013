@@ -30,7 +30,7 @@
 	CGContextBeginPage(context, &pdfBox);
 	
     CGContextSelectFont(context,
-                        "Helvetica Bold",
+                        "AmericanTypewriter-Bold",
                         20.0,
                         kCGEncodingMacRoman);
     CGContextSetFillColorWithColor(context,

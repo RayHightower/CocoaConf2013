@@ -16,7 +16,7 @@
 - (IBAction)handleUndoTapped:(id)sender;
 - (IBAction)handleSaveToICloudTapped:(id)sender;
 - (IBAction)handleActionTapped:(id)sender;
-@property (strong) UIDocumentInteractionController *interactionController;
+@property (strong) UIDocumentInteractionController *interactionController;   // This view shows apps that can receive the export.
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 @end
 
